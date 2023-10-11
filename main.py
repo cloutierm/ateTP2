@@ -50,5 +50,5 @@ while (rejouer):
                 print("Bye")
 
             else:
-                print("Je n'ai pas compris, bye.")
+                print("Je n'ai pas compris, bye.") # Si la personne a ecrit n'importe quoi
                 rejouer = False
