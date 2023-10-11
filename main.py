@@ -2,53 +2,49 @@
 # Crée en 2023
 # Code du TP2
 
+import random
 
-rejouer = True
+def jeu(): # Fonction qui va executer tout le code du jeu
+
+    rejouer = True
+
+    # Boucle qui va executer le jeu et si la personne veurt rejouer, la boucle va recommencer
+    while (rejouer):
 
 
-while (rejouer):
+        nombreEssais = 0
+        reponse = True
 
-    # Importation de random
-    import random
+        nbr1 = int(input("Entrer le premier notre de votre intervale: "))
+        nbr2 = int(input("Entrer le deuxième nombre de votre intervale: "))
 
-    # Variables globales
-    nombreEssais = 0
-    essai = -1
-    reponse = True
+        inconnu = random.randint(nbr1, nbr2)
 
-    # Choix des l'intervale
-    nbr1 = int(input("Entrer le premier notre de votre intervale: "))
-    nbr2 = int(input("Entrer le deuxième nombre de votre intervale: "))
+        # Boucles qui va éxecuter la question jusqu'à ce que le nombre est trouvé
+        while (reponse):
+            essai = int(input("Entrez un chiffre de %d et %d: " % (nbr1, nbr2)))
 
-    # Choix du nombre aleatoire
-    inconnu = random.randint(nbr1, nbr2)
+            nombreEssais += 1
 
-    # Boucles qui va éxecuter la question jusqu'à ce que le nombre est trouvé
-    while (reponse):
-        essai = int(input("Entrez un chiffre de %d et %d: " % (nbr1, nbr2)))
+            if essai > inconnu:
+                print("Le nombre recherché est plus petit que", essai)
 
-        nombreEssais += 1
+            elif essai < inconnu:
+                print("Le nombre recherché est plus grand que", essai,)
 
-        # Si le nombre est plus grand que le nombre recherché
-        if essai > inconnu:
-            print("Le nombre recherché est plus petit que", essai)
+            # Si le nombre recherché est trouvé, on pose la question si elle veut recommencer ou non
+            elif essai == inconnu:
+                print("\n\nBravo! Le nombre recherché était", inconnu, "\nVotre score est : %d" % (nombreEssais))
+                reponse = False
+                # On pose la question si elle veut rejouer ou non
+                repeter = str(input("Voulez-vous rejouer? "))
+                if repeter == "oui":
+                    rejouer = True
 
-        # Si le nombre est plus petit que le nombre recherché
-        elif essai < inconnu:
-            print("Le nombre recherché est plus grand que", essai,)
+                elif repeter == "non":
+                    rejouer = False
+                    print("Bye")
 
-        # Si le nombre recherché est trouvé
-        elif essai == inconnu:
-            print("\n\nBravo! Le nombre recherché était", inconnu, "\nVotre score est : %d" % (nombreEssais))
-            reponse = False
-            repeter = str(input("Voulez-vous rejouer? "))
-            if repeter == "oui": # Si la personne veut rejouer
-                rejouer = True
-
-            elif repeter == "non": # Si la personne ne veut pas rejouer
-                rejouer = False
-                print("Bye")
-
-            else:
-                print("Je n'ai pas compris, bye.") # Si la personne a ecrit n'importe quoi
-                rejouer = False
+                else:
+                    print("Je n'ai pas compris, bye.")
+                    rejouer = False
