@@ -48,3 +48,6 @@ def jeu(): # Fonction qui va executer tout le code du jeu
                 else:
                     print("Je n'ai pas compris, bye.")
                     rejouer = False
+
+
+jeu()
